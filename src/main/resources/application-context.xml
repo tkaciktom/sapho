@@ -7,7 +7,7 @@
     <import resource="processor-context.xml" />
 
     <bean id="delimiterBasedTokenHolderFactory" class="cz.tkacikt.test.sapho.piggyfier.tokenholder.factory.DelimiterBasedStringTokenHolderFactory">
-        <property name="tokensDelimiter" value="-" />
+        <constructor-arg name="tokensDelimiter" value="-" />
     </bean>
 
     <bean id="defaultCmdLineTokenizer" class="cz.tkacikt.test.sapho.piggyfier.tokenizer.DefaultCmdLineTokenizer">

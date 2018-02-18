@@ -6,7 +6,11 @@ import cz.tkacikt.test.sapho.piggyfier.tokenholder.StringTokenHolder;
 
 public class DelimiterBasedStringTokenHolderFactory implements StringTokenHolderFactory {
 
-    private volatile String tokensDelimiter;
+    private final String tokensDelimiter;
+
+    public DelimiterBasedStringTokenHolderFactory(String tokensDelimiter) {
+        this.tokensDelimiter = tokensDelimiter;
+    }
 
     @Override
     public StringTokenHolder createTokenHolder(String value) {
@@ -18,10 +22,6 @@ public class DelimiterBasedStringTokenHolderFactory implements StringTokenHolder
         } else {
             return new SingleStringTokenHolder(value);
         }
-    }
-
-    public void setTokensDelimiter(String tokensDelimiter) {
-        this.tokensDelimiter = tokensDelimiter;
     }
 
 }
