@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SingleStringTokenHolder implements StringTokenHolder {
 
-    private StringToken token;
+    private final StringToken token;
 
     public SingleStringTokenHolder(String tokenString) {
         Assert.notNull(tokenString, "Token string cannot be null!");

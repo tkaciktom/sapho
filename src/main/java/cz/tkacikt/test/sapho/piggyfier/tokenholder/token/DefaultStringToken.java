@@ -2,8 +2,8 @@ package cz.tkacikt.test.sapho.piggyfier.tokenholder.token;
 
 public class DefaultStringToken implements StringToken {
 
-    private String initialValue;
-    private String value;
+    private final String initialValue;
+    private volatile String value;
 
     public DefaultStringToken(String value) {
         if(value == null) {
@@ -24,7 +24,7 @@ public class DefaultStringToken implements StringToken {
     }
 
     @Override
-    public void update(String newValue) {
+    public void setValue(String newValue) {
         this.value = newValue;
     }
 

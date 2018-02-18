@@ -21,7 +21,7 @@ public class CapitalizationUpdater implements Updater {
             }
         }
 
-        token.update(newValue.toString());
+        token.setValue(newValue.toString());
     }
 
     @Override

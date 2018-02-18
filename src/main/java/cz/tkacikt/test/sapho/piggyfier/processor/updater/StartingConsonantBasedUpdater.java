@@ -15,7 +15,7 @@ public class StartingConsonantBasedUpdater extends SubstringBasedUpdater {
             StringBuilder newValue = new StringBuilder(token.getValue().substring(1))
                     .append(firstCharacter)
                     .append("ay");
-            token.update(newValue.toString());
+            token.setValue(newValue.toString());
         }
     }
 

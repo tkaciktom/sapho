@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  */
 public class DefaultCmdLineTokenizer implements CmdLineTokenizer {
 
-    private StringTokenHolderFactory tokenHolderFactory;
+    private volatile StringTokenHolderFactory tokenHolderFactory;
 
     /**
      * Returns a sequential {@code Stream} with command line arguments as its source.

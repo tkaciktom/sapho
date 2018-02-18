@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UpdaterBasedTokenHolderProcessor implements TokenHolderProcessor {
 
-    List<Updater> updaters;
+    private volatile List<Updater> updaters;
 
     @Override
     public StringTokenHolder process(StringTokenHolder inputTokenHolder) {

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public abstract class MultipleStringTokenHolder implements StringTokenHolder {
 
-    private List<StringToken> tokens;
+    private final List<StringToken> tokens;
 
     public MultipleStringTokenHolder(List<String> tokensString) {
         Assert.notNull(tokensString, "Tokens list cannot be null!");

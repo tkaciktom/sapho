@@ -18,7 +18,7 @@ public class PunctuationAdditionUpdater implements Updater {
             }
         }
 
-        token.update(valueReversed.reverse().toString());
+        token.setValue(valueReversed.reverse().toString());
     }
 
     @Override

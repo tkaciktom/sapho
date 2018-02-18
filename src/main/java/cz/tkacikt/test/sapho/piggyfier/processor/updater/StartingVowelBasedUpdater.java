@@ -14,7 +14,7 @@ public class StartingVowelBasedUpdater extends SubstringBasedUpdater {
         if(getSubstrings().contains(firstCharacter)) {
             StringBuilder newValue = new StringBuilder(token.getValue())
                     .append("way");
-            token.update(newValue.toString());
+            token.setValue(newValue.toString());
         }
     }
 

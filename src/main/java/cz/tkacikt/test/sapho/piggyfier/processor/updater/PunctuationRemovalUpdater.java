@@ -8,7 +8,7 @@ public class PunctuationRemovalUpdater implements Updater {
     public void update(StringToken token) {
         String newValue = token.getValue().replaceAll("\\p{Punct}", "");
 
-        token.update(newValue);
+        token.setValue(newValue);
     }
 
     @Override

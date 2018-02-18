@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class DelimiterBasedMultipleStringTokenHolder extends MultipleStringTokenHolder {
 
-    private String delimiter;
+    private final String delimiter;
 
     public DelimiterBasedMultipleStringTokenHolder(String delimiter, String delimitedValues) {
         super(split(delimitedValues, delimiter));

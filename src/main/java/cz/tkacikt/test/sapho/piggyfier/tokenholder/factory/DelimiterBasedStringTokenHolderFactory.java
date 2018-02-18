@@ -6,7 +6,7 @@ import cz.tkacikt.test.sapho.piggyfier.tokenholder.StringTokenHolder;
 
 public class DelimiterBasedStringTokenHolderFactory implements StringTokenHolderFactory {
 
-    private String tokensDelimiter;
+    private volatile String tokensDelimiter;
 
     @Override
     public StringTokenHolder createTokenHolder(String value) {

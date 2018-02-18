@@ -5,7 +5,7 @@ import cz.tkacikt.test.sapho.piggyfier.tokenholder.StringTokenHolder;
 
 public class PrinterBasedStringTokenHolderCollector implements StringTokenHolderCollector {
 
-    private Printer collectorPrinter;
+    private volatile Printer collectorPrinter;
 
     @Override
     public void collect(StringTokenHolder tokenHolder) {

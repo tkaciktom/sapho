@@ -6,7 +6,7 @@ public class ToLowerCaseUpdater implements Updater {
 
     @Override
     public void update(StringToken token) {
-        token.update(token.getValue().toLowerCase());
+        token.setValue(token.getValue().toLowerCase());
     }
 
     @Override
