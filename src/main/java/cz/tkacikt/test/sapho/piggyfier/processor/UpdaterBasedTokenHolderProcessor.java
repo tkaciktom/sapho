@@ -16,8 +16,7 @@ public class UpdaterBasedTokenHolderProcessor implements TokenHolderProcessor {
             return null;
         }
 
-        StringTokenHolder tokenHolder = inputTokenHolder;
-        for(StringToken token : tokenHolder.getTokens()) {
+        for(StringToken token : inputTokenHolder.getTokens()) {
             for (Updater updater : updaters) {
                 updater.update(token);
                 if (updater.isTerminating(token)) {
@@ -25,7 +24,7 @@ public class UpdaterBasedTokenHolderProcessor implements TokenHolderProcessor {
                 }
             }
         }
-        return tokenHolder;
+        return inputTokenHolder;
     }
 
     public void setUpdaters(List<Updater> updaters) {
