@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="processor-context.xml" />
+
+    <bean id="delimiterBasedTokenHolderFactory" class="cz.tkacikt.test.sapho.piggyfier.tokenholder.factory.DelimiterBasedStringTokenHolderFactory">
+        <property name="tokensDelimiter" value="-" />
+    </bean>
+
+    <bean id="defaultCmdLineTokenizer" class="cz.tkacikt.test.sapho.piggyfier.tokenizer.DefaultCmdLineTokenizer">
+        <property name="tokenHolderFactory" ref="delimiterBasedTokenHolderFactory" />
+    </bean>
+
+    <bean id="loggerBasedPrinter" class="cz.tkacikt.test.sapho.piggyfier.collector.printer.LoggerBasedPrinter" />
+
+    <bean id="printerBasedStringTokenHolderCollector" class="cz.tkacikt.test.sapho.piggyfier.collector.PrinterBasedStringTokenHolderCollector">
+        <property name="collectorPrinter" ref="loggerBasedPrinter" />
+    </bean>
+
+    <bean id="appRunner" class="cz.tkacikt.test.sapho.piggyfier.AppRunner">
+        <property name="cmdLineTokenizer" ref="defaultCmdLineTokenizer" />
+        <property name="tokenHolderProcessor" ref="updaterBasedTokenHolderProcessor" />
+        <property name="tokenHolderCollector" ref="printerBasedStringTokenHolderCollector" />
+    </bean>
+
+</beans>

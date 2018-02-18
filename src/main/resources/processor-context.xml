@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="endStringBasedTerminatingUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.EndStringBasedTerminatingUpdater">
+        <property name="substrings" value="${piggyfier.updater.way}" />
+    </bean>
+
+    <bean id="toLowerCaseUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.ToLowerCaseUpdater" />
+
+    <bean id="punctuationRemovalUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.PunctuationRemovalUpdater" />
+
+    <bean id="startingConsonantBasedUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.StartingConsonantBasedUpdater">
+        <property name="substrings">
+            <bean class="org.springframework.util.StringUtils" factory-method="commaDelimitedListToSet">
+                <constructor-arg type="java.lang.String" value="${piggyfier.updater.consonants}"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="startingVowelBasedUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.StartingVowelBasedUpdater">
+        <property name="substrings">
+            <bean class="org.springframework.util.StringUtils" factory-method="commaDelimitedListToSet">
+                <constructor-arg type="java.lang.String" value="${piggyfier.updater.vowels}"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="punctuationAdditionUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.PunctuationAdditionUpdater" />
+
+    <bean id="capitalizationUpdater" class="cz.tkacikt.test.sapho.piggyfier.processor.updater.CapitalizationUpdater" />
+
+    <bean id="updaterBasedTokenHolderProcessor" class="cz.tkacikt.test.sapho.piggyfier.processor.UpdaterBasedTokenHolderProcessor">
+        <property name="updaters">
+            <list>
+                <ref bean="endStringBasedTerminatingUpdater" />
+                <!-- initialize value - punctuation and case depend on initial value -->
+                <ref bean="toLowerCaseUpdater" />
+                <ref bean="punctuationRemovalUpdater" />
+                <!-- apply updaters -->
+                <ref bean="startingConsonantBasedUpdater" />
+                <ref bean="startingVowelBasedUpdater" />
+                <ref bean="punctuationAdditionUpdater" />
+                <ref bean="capitalizationUpdater" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
