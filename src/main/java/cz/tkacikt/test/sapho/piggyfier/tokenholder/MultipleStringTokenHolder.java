@@ -4,6 +4,7 @@ import cz.tkacikt.test.sapho.piggyfier.tokenholder.token.DefaultStringToken;
 import cz.tkacikt.test.sapho.piggyfier.tokenholder.token.StringToken;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public abstract class MultipleStringTokenHolder implements StringTokenHolder {
 
     @Override
     public List<StringToken> getTokens() {
-        return tokens;
+        return new ArrayList(tokens);
     }
 
     @Override
