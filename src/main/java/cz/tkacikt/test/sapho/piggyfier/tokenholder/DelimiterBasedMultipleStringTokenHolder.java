@@ -20,8 +20,8 @@ public class DelimiterBasedMultipleStringTokenHolder extends MultipleStringToken
     private static List<String> split(String delimitedValues, String delimiter) {
         Assert.hasLength(delimiter, "Delimiter cannot be null!");
 
-        int expectedTokensCount = StringUtils.countOccurrencesOf(delimitedValues, delimiter);
-        Assert.isTrue(expectedTokensCount > 0, "Delimiter cannot be found in input string!");
+        int delimitersCount = StringUtils.countOccurrencesOf(delimitedValues, delimiter);
+        Assert.isTrue(delimitersCount > 0, "Delimiter cannot be found in input string!");
 
         return Arrays.asList(delimitedValues.split(delimiter, -1));
     }
