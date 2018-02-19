@@ -14,11 +14,12 @@ public class DelimiterBasedMultipleStringTokenHolder extends MultipleStringToken
     public DelimiterBasedMultipleStringTokenHolder(String delimiter, String delimitedValues) {
         super(split(delimitedValues, delimiter));
 
-        Assert.notNull(delimiter, "Delimiter cannot be null!");
         this.delimiter = delimiter;
     }
 
     private static List<String> split(String delimitedValues, String delimiter) {
+        Assert.hasLength(delimiter, "Delimiter cannot be null!");
+
         int expectedTokensCount = StringUtils.countOccurrencesOf(delimitedValues, delimiter);
         Assert.isTrue(expectedTokensCount > 0, "Delimiter cannot be found in input string!");
 

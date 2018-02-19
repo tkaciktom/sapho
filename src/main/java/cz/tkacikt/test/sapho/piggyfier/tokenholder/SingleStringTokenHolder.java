@@ -12,7 +12,6 @@ public class SingleStringTokenHolder implements StringTokenHolder {
     private final StringToken token;
 
     public SingleStringTokenHolder(String tokenString) {
-        Assert.notNull(tokenString, "Token string cannot be null!");
         this.token = new DefaultStringToken(tokenString);
     }
 
